@@ -1,0 +1,107 @@
+/* ── MedSync DatePicker Theme ───────────────────────────────── */
+
+.react-datepicker {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.react-datepicker__month-container {
+    width: 100%;
+}
+
+/* Header */
+.react-datepicker__header {
+    background-color: #2e7d32;
+    border-bottom: none;
+    padding: 12px 0 8px;
+}
+
+.react-datepicker__current-month {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Nav arrows */
+.react-datepicker__navigation-icon::before {
+    border-color: white;
+}
+
+.react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+    border-color: #c8e6c9;
+}
+
+/* Day names row */
+.react-datepicker__day-names {
+    background-color: #2e7d32;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 8px;
+}
+
+.react-datepicker__day-name {
+    color: #c8e6c9;
+    font-size: 12px;
+    font-weight: 600;
+    width: 2rem;
+    text-align: center;
+}
+
+/* Month grid */
+.react-datepicker__month {
+    padding: 8px;
+}
+
+.react-datepicker__week {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Individual days */
+.react-datepicker__day {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    font-size: 13px;
+    color: #333;
+    text-align: center;
+    margin: 2px;
+}
+
+/* Valid/clickable days */
+.react-datepicker__day:not(.react-datepicker__day--disabled):hover {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 50%;
+}
+
+/* Selected day */
+.react-datepicker__day--selected {
+    background-color: #2e7d32 !important;
+    color: white !important;
+    border-radius: 50% !important;
+    font-weight: 700;
+}
+
+/* Today */
+.react-datepicker__day--today {
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+/* Disabled days — greyed out */
+.react-datepicker__day--disabled {
+    color: #ccc !important;
+    cursor: not-allowed;
+}
+
+/* Outside month days */
+.react-datepicker__day--outside-month {
+    color: #ddd;
+}
