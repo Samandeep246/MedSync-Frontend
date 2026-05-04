@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";   // ← added useSearchParams
 import { useAuth } from "../context/AuthContext";
 import authService from "../services/authService";
 import { FaEye, FaEyeSlash, FaBriefcaseMedical } from "react-icons/fa";
@@ -13,6 +13,8 @@ function LoginPage() {
 
     const { login } = useAuth();
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const redirectTo = searchParams.get("redirect");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,9 +23,19 @@ function LoginPage() {
         try {
             const data = await authService.login(email, password);
             login(data);
-            if (data.role === "Admin") navigate("/admin");
-            else if (data.role === "Doctor") navigate("/doctor");
-            else navigate("/patient");
+
+            // ── go to redirect URL if present, otherwise default dashboard ──
+            if (redirectTo) {
+                navigate(redirectTo);
+            } else if (data.role === "Admin") {
+                navigate("/admin");
+            } else if (data.role === "Doctor") {
+                navigate("/doctor");
+            } else {
+                navigate("/patient");
+            }
+            // ─────────────────────────────────────────────────────────────────────
+
         } catch (err) {
             setError("Invalid email or password.");
         } finally {

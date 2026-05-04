@@ -183,7 +183,16 @@ function BookAppointment() {
             setSuccess("Appointment booked successfully!");
             setTimeout(() => navigate("/patient/appointments"), 1500);
         } catch (err) {
-            setError(err.response?.data || "Failed to book appointment. Please try again.");
+            const data = err.response?.data;
+            if (typeof data === "string") {
+                setError(data);
+            } else if (data?.title) {
+                setError(data.title);
+            } else if (data?.errors) {
+                setError(Object.values(data.errors).flat().join(", "));
+            } else {
+                setError("Failed to book appointment. Please try again.");
+            }
         } finally {
             setSubmitting(false);
         }
