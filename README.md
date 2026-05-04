@@ -75,6 +75,8 @@ src/
 - ✅ **Admin Exports** — Export appointments as CSV or PDF
 - ✅ **Forgot/Reset Password** — Full flow with reset code
 - ✅ **Availability Calendar** — Only valid days are clickable
+- ✅ **Email Deep Link** — Click reminder email → auto redirects to appointment card highlighted in green
+- ✅ **Login Redirect** — `?redirect=` param support for deep links from emails
 
 ---
 
